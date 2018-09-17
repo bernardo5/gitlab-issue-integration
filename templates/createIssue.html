@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Gitlab Integration{%endblock%}
+
+
+{% block body %}
+
+<div class="gitlab-form">
+
+	<form action="{{ url_for('projects') }}" method="post">
+		<div class="input-team">
+			<input type="hidden" id="team" name="team" value="{{team}}">
+		</div>
+
+		<div class="input-project">
+			<input type="hidden" id="project" name="project" value="{{project}}">
+		</div>
+
+		<div class="input-token">
+			<input type="hidden" id="token" name="token" value="{{token}}">
+		</div>
+
+		<div class="template-choice">
+			<div class="template-choice-text">Please select your issue template</div>
+			<div class="template-choice-dropdown">
+				<select id="template-names">
+					<option value = "">--none--</option>
+				   {%for template in templates_map%}
+				   		<option value = "{{template['content']}}">{{template['name']}}</option>
+				   {%endfor%}
+				</select>				
+			</div>
+		</div>
+
+		<div class="input-title">
+			{{creation_form.issue_title.label}} {{creation_form.issue_title}}
+		</div>
+		<div class="input-description">
+			{{creation_form.issue_description.label}} {{creation_form.issue_description(cols="50", rows="20")}}
+		</div>
+
+		<div class="input-submit">
+			<input type="submit" name="Submit">
+		</div>
+	</form>
+</div>
+
+
+<script type="text/javascript">
+	$(function() {
+	    $('#template-names').change(function(){
+	       $('#issue_description_inner_form').val(this.value);
+	    });
+	});
+</script>
+{% endblock %}

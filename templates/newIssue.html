@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Gitlab Integration{%endblock%}
+
+
+{% block body %}
+
+<div class="gitlab-form">
+
+	<form action="{{ url_for('templating') }}" method="post">
+		<div class="input-team">
+			{{form.team.label}} {{form.team}}
+		</div>
+
+		<div class="input-project">
+			{{form.project.label}} {{form.project}}
+		</div>
+
+		<div class="input-token">
+			{{form.token.label}} {{form.token}}
+		</div>
+
+		<!--<div class="input-title">
+			{{creation_form.issue_title.label}} {{creation_form.issue_title}}
+		</div>
+		<div class="input-description">
+			{{creation_form.issue_description.label}} {{creation_form.issue_description(cols="50", rows="20")}}
+		</div>-->
+
+		<div class="input-submit">
+			<input type="submit" name="Submit">
+		</div>
+	</form>
+</div>
+
+
+{% endblock %}

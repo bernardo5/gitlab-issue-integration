@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Gitlab Integration{%endblock%}
+
+
+{% block body %}
+
+<div class="gitlab-body-options">
+
+	<div class="issue-option">
+		<div class="report-issue" onclick="createIssue();">
+			<div class="landing-button">
+				<div class="button-text">
+					Report a bug
+				</div>
+				<div class="button-image">
+					<img class="gitlab-button-img" src="{{url_for('static', filename='images/bug.png')}}">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="issue-option">
+		<div class="view-issue" onclick="viewIssues();">
+			<div class="landing-button">
+				<div class="button-text">
+					View issues
+				</div>
+				<div class="button-image">
+					<img class="gitlab-button-img" src="{{url_for('static', filename='images/glasses.png')}}">
+				</div>
+			</div>
+			
+		</div>	
+	</div>	
+
+</div>
+
+<script type="text/javascript">
+	function viewIssues(){
+		window.open('{{url_for("form_page", btntype="view")}}',"_self")
+	}
+
+	function createIssue(){
+		window.open('{{url_for("form_page", btntype="create")}}',"_self")
+	}
+</script>
+{% endblock %}

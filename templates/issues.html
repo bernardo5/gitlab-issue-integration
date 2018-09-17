@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Gitlab Integration{%endblock%}
+
+
+{% block body %}
+
+<div class="issues-global-wrapper">
+	<table>
+		<tr>
+			<td>Number</td>
+			<td>Title</td>
+			<td>URL</td>
+			<td>Hyperlink</td>
+		</tr>
+		{%for issue in issues%}
+		<tr>
+			<td>{{issue.number}}</td>
+			<td>{{issue.title}}</td>
+			<td>{{issue.url}}</td>
+			<td><a href="{{issue.url}}">click here</a></td>
+		</tr>
+		{%endfor%}
+	</table>
+</div>
+
+{% endblock %}
